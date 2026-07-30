@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { BadgeCheckIcon, HouseIcon, MusicIcon, UsersIcon } from "lucide-react";
 import Image from "next/image";
 import bannerImage from "../images/bannerImage.jpg";
@@ -12,8 +14,20 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { getProperties } from "./_action/getProperties";
+import { IProperty } from "@/lib/types";
 
-const HomePage = () => {
+const HomePage = async () => {
+  const properties = await getProperties();
+
+  if (!properties.success || !properties.data?.length) {
+    return (
+      <p className="py-12 text-center text-muted-foreground">
+        You haven&apos;t created any posts yet.
+      </p>
+    );
+  }
+
   return (
     <>
       {/* banner  */}
@@ -105,132 +119,29 @@ const HomePage = () => {
 
       {/* card  */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-10 my-10">
-        <Card className="relative  ">
-          <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
-          <img
-            src="https://avatar.vercel.sh/shadcn1"
-            alt="Event cover"
-            className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
-          />
-          <CardHeader>
-            <CardAction>
-              <Badge variant="secondary">Featured</Badge>
-            </CardAction>
-            <CardTitle>Design systems meetup</CardTitle>
-            <CardDescription>
-              A practical talk on component APIs, accessibility, and shipping
-              faster.
-            </CardDescription>
-          </CardHeader>
-          <CardFooter>
-            <Button className="w-full">View Event</Button>
-          </CardFooter>
-        </Card>
-        <Card className="relative  ">
-          <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
-          <img
-            src="https://avatar.vercel.sh/shadcn1"
-            alt="Event cover"
-            className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
-          />
-          <CardHeader>
-            <CardAction>
-              <Badge variant="secondary">Featured</Badge>
-            </CardAction>
-            <CardTitle>Design systems meetup</CardTitle>
-            <CardDescription>
-              A practical talk on component APIs, accessibility, and shipping
-              faster.
-            </CardDescription>
-          </CardHeader>
-          <CardFooter>
-            <Button className="w-full">View Event</Button>
-          </CardFooter>
-        </Card>
-        <Card className="relative  ">
-          <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
-          <img
-            src="https://avatar.vercel.sh/shadcn1"
-            alt="Event cover"
-            className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
-          />
-          <CardHeader>
-            <CardAction>
-              <Badge variant="secondary">Featured</Badge>
-            </CardAction>
-            <CardTitle>Design systems meetup</CardTitle>
-            <CardDescription>
-              A practical talk on component APIs, accessibility, and shipping
-              faster.
-            </CardDescription>
-          </CardHeader>
-          <CardFooter>
-            <Button className="w-full">View Event</Button>
-          </CardFooter>
-        </Card>
-        <Card className="relative  ">
-          <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
-          <img
-            src="https://avatar.vercel.sh/shadcn1"
-            alt="Event cover"
-            className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
-          />
-          <CardHeader>
-            <CardAction>
-              <Badge variant="secondary">Featured</Badge>
-            </CardAction>
-            <CardTitle>Design systems meetup</CardTitle>
-            <CardDescription>
-              A practical talk on component APIs, accessibility, and shipping
-              faster.
-            </CardDescription>
-          </CardHeader>
-          <CardFooter>
-            <Button className="w-full">View Event</Button>
-          </CardFooter>
-        </Card>
-        <Card className="relative  ">
-          <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
-          <img
-            src="https://avatar.vercel.sh/shadcn1"
-            alt="Event cover"
-            className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
-          />
-          <CardHeader>
-            <CardAction>
-              <Badge variant="secondary">Featured</Badge>
-            </CardAction>
-            <CardTitle>Design systems meetup</CardTitle>
-            <CardDescription>
-              A practical talk on component APIs, accessibility, and shipping
-              faster.
-            </CardDescription>
-          </CardHeader>
-          <CardFooter>
-            <Button className="w-full">View Event</Button>
-          </CardFooter>
-        </Card>
-        <Card className="relative  ">
-          <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
-          <img
-            src="https://avatar.vercel.sh/shadcn1"
-            alt="Event cover"
-            className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
-          />
-          <CardHeader>
-            <CardAction>
-              <Badge variant="secondary">Featured</Badge>
-            </CardAction>
-            <CardTitle>Design systems meetup</CardTitle>
-            <CardDescription>
-              A practical talk on component APIs, accessibility, and shipping
-              faster.
-            </CardDescription>
-          </CardHeader>
-          <CardFooter>
-            <Button className="w-full">View Event</Button>
-          </CardFooter>
-        </Card>
+        {properties?.data?.slice(0, 6).map((property: IProperty) => (
+          <Card key={property.id} className="relative  ">
+            <div className="absolute inset-0 z-30 aspect-video bg-black/35" />
+            <img
+              src="https://avatar.vercel.sh/shadcn1"
+              alt="Event cover"
+              className="relative z-20 aspect-video w-full object-cover brightness-60 grayscale dark:brightness-40"
+            />
+            <CardHeader>
+              <CardAction>
+                <Badge variant="secondary">Featured</Badge>
+              </CardAction>
+              <CardTitle>{property?.title}</CardTitle>
+              <CardDescription>
+                A practical talk on component APIs, accessibility, and shipping
+                faster.
+              </CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <Button className="w-full">View Event</Button>
+            </CardFooter>
+          </Card>
+        ))}
       </div>
       {/* card  */}
     </>

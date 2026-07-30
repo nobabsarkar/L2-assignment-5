@@ -103,7 +103,7 @@ export function Navbar() {
             // >
             //   {item.label}
             // </Button>
-            <Link key={item.href} href={item.href}>
+            <Link className="cursor-pointer" key={item.href} href={item.href}>
               <Button variant="ghost" size="sm">
                 {item.label}
               </Button>
