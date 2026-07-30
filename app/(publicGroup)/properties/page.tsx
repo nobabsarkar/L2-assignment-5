@@ -19,6 +19,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
+import Link from "next/link";
 
 const properties = async () => {
   const properties = await getProperties();
@@ -69,7 +70,11 @@ const properties = async () => {
               </CardDescription>
             </CardHeader>
             <CardFooter>
-              <Button className="w-full">View Event</Button>
+              <Link className="w-full" href={"/properties"}>
+                <Button className="w-full cursor-pointer p-4">
+                  View Details
+                </Button>
+              </Link>
             </CardFooter>
           </Card>
         ))}
