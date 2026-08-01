@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { getProperties } from "../_action/getProperties";
 import {
   Card,
@@ -23,16 +22,20 @@ import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectValue } from "@base-ui/react";
 
-interface Props {
+type Props = {
   searchParams: Promise<{
     location?: string;
     price?: string;
   }>;
-}
+};
 
 const properties = async ({ searchParams }: Props) => {
-  const query = await searchParams;
-  const properties = await getProperties(query);
+  const params = await searchParams;
+
+  const properties = await getProperties({
+    location: params.location,
+    price: params.price,
+  });
 
   if (!properties.success || !properties.data?.length) {
     return (
@@ -136,15 +139,15 @@ const properties = async ({ searchParams }: Props) => {
         </div>
 
         {/* Search & Filter */}
-        <form action={"/properties"}>
+
+        <form action="/properties" method="GET">
           <div className="mb-10 rounded-2xl border bg-background p-6 shadow-sm">
             <div className=" grid gap-4 md:grid-cols-3">
               {/* Search */}
               <Field className="md:col-span-2">
                 <InputGroup className="h-12">
                   <InputGroupInput
-                    defaultValue={query?.location}
-                    className=""
+                    defaultValue={params?.location}
                     name="location"
                     placeholder="Search by Name..."
                   />
@@ -157,7 +160,7 @@ const properties = async ({ searchParams }: Props) => {
               {/* Price Filter */}
               <div>
                 <input
-                  defaultValue={query?.price}
+                  defaultValue={params.price}
                   type="number"
                   name="price"
                   placeholder="Maximum Price"
@@ -166,12 +169,15 @@ const properties = async ({ searchParams }: Props) => {
               </div>
             </div>
 
-            <div className="mt-5 flex flex-wrap justify-end gap-3">
+            <div className="mt-5 flex flex-wrap justify-end gap-3 items-center">
               <Button variant="outline" className="h-11 cursor-pointer">
-                Reset
+                <Link href="/properties">Reset</Link>
               </Button>
 
-              <Button className="h-11 bg-green-600 hover:bg-green-700 cursor-pointer">
+              <Button
+                type="submit"
+                className="h-11 bg-green-600 hover:bg-green-700 cursor-pointer"
+              >
                 Search
               </Button>
             </div>

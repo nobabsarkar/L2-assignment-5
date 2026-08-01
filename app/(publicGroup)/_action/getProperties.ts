@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 type TPropertyQuery = {
   location?: string;
   price?: string;
@@ -18,6 +16,9 @@ export const getProperties = async (query?: TPropertyQuery) => {
 
   const res = await fetch(
     `${process.env.BACKEND_API_URL}/api/properties?${params.toString()}`,
+    {
+      cache: "no-store",
+    },
   );
 
   const result = await res.json();
