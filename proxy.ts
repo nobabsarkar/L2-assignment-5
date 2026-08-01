@@ -6,9 +6,11 @@ export const proxy = async (request: NextRequest) => {
 
   if (pathname.startsWith("/properties/") && !accessToken) {
     const loginUrl = new URL("/login", request.url);
+
     loginUrl.searchParams.set("redirectTo", pathname + request.nextUrl.search);
     return NextResponse.redirect(loginUrl);
   }
+
   return NextResponse.next();
 };
 

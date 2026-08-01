@@ -1,5 +1,7 @@
 "use server";
 
+import { redirect } from "next/navigation";
+
 export const registerActions = async (
   redirectTo: string,
   formData: FormData,
@@ -25,5 +27,7 @@ export const registerActions = async (
   });
 
   const result = await res.json();
-  console.log(result);
+  if (result?.success) {
+    redirect("/login");
+  }
 };

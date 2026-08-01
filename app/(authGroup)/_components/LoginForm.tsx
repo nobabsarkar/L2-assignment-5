@@ -4,10 +4,21 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { loginActions } from "../_actions/loginActions";
+import { useActionState } from "react";
 
 const LoginForm = () => {
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirectTo") ?? "";
+
+  const [state, action, pending] = useActionState(
+    loginActions.bind(null, redirectTo),
+    false,
+  );
+
   return (
-    <form className="space-y-4">
+    <form action={action} className="space-y-4">
       <Card className="p-5 space-y-2">
         <Input
           name="email"
