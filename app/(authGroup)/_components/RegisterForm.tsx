@@ -5,13 +5,31 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useSearchParams } from "next/navigation";
+import { useActionState, useState } from "react";
+import { registerActions } from "../_actions/registerActions";
+
 const RegisterForm = () => {
+  const [role, setRole] = useState("");
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirectTo") ?? "";
+
+  const [state, action, pending] = useActionState(registerActions, false);
+
   return (
-    <form className="space-y-4">
+    <form action={action} className="space-y-4">
       <Card className="p-5 space-y-2">
         <Input
-          name="Name"
-          type="name"
+          name="name"
+          type="text"
           placeholder="Enter Your Name"
           required
           className="p-5"
@@ -30,14 +48,19 @@ const RegisterForm = () => {
           required
           className="p-5"
         />
-        <Input
-          name="role"
-          type="text"
-          placeholder="Enter Your Role"
-          required
-          className="p-5"
-        />
-        <Button className="p-5" type="submit">
+        <Select onValueChange={setRole}>
+          <SelectTrigger className="w-full p-5">
+            <SelectValue placeholder="Select Role" />
+          </SelectTrigger>
+
+          <SelectContent>
+            <SelectItem value="TENANT">TENANT</SelectItem>
+            <SelectItem value="LANDLORD">LANDLORD</SelectItem>
+          </SelectContent>
+        </Select>
+        <input type="hidden" name="role" value={role} />
+
+        <Button className="p-5 cursor-pointer" type="submit">
           Register
         </Button>
         <p className="text-center">
