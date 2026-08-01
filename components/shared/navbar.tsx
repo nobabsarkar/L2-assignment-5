@@ -385,13 +385,15 @@ export function Navbar() {
           {/* Mobile Menu */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger>
-              <Button
+              {/* <Button
                 variant="outline"
                 size="icon"
                 className="h-12 w-12 cursor-pointer rounded-full border-green-500/20 bg-background/60 backdrop-blur hover:bg-green-600 hover:text-white lg:hidden"
               >
-                <Menu className="h-8 w-8" />
-              </Button>
+                <Menu className="h-8 w-8 " />
+              </Button> */}
+
+              <Menu className="h-8 w-8 lg:hidden cursor-pointer" />
             </SheetTrigger>
 
             <SheetContent
