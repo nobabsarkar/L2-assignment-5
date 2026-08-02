@@ -372,6 +372,7 @@ export function Navbar({ user }: { user: any }) {
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem
+                    className="cursor-pointer"
                     variant="destructive"
                     onClickCapture={async () =>
                       await handleUserMenuAction("logout")

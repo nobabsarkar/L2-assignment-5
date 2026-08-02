@@ -23,14 +23,12 @@ const LoginForm = () => {
   useEffect(() => {
     if (!state) return;
 
-    console.log(state.error);
-
     if (state.success) {
       toast.success(state.message);
 
       router.push(state.redirectTo || "/");
     } else {
-      toast.error(state.message || state.message || "Login failed");
+      toast.error(state.messsage);
     }
   }, [state, router]);
 
