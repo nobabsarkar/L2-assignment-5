@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState } from "react";
@@ -33,6 +34,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { logout } from "@/service/logout";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -71,13 +75,16 @@ function ThemeToggle() {
   );
 }
 
-export function Navbar() {
+export function Navbar({ user }: { user: any }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const router = useRouter();
 
-  const user = {
-    success: {
-      // name: "nobab",
-    },
+  const handleUserMenuAction = async (action: string) => {
+    if (action === "logout") {
+      await logout();
+      toast.success("User Logged out successfully");
+      router.push("/login");
+    }
   };
 
   return (
@@ -333,12 +340,10 @@ export function Navbar() {
                   <DropdownMenuLabel>
                     <div className="flex flex-col gap-0.5">
                       <span className="text-sm font-medium">
-                        {/* {user?.data?.profile?.name || "Name"} */}
-                        <h1>Name:Nobab</h1>
+                        <h1>Name: {user?.data?.name}</h1>
                       </span>
                       <span className="text-xs font-normal text-muted-foreground">
-                        {/* {user?.data?.profile?.email || "Email"} */}
-                        <h1>email:nobab@gmail.com</h1>
+                        <h1>Email: {user?.data?.email}</h1>
                       </span>
                     </div>
                   </DropdownMenuLabel>
@@ -368,6 +373,9 @@ export function Navbar() {
                 <DropdownMenuGroup>
                   <DropdownMenuItem
                     variant="destructive"
+                    onClickCapture={async () =>
+                      await handleUserMenuAction("logout")
+                    }
                     onClick={() => console.log("[v0] Sign out clicked")}
                   >
                     <LogOut data-icon="inline-start" />

@@ -3,12 +3,25 @@
 import { cookies } from "next/headers";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { redirect } from "next/navigation";
+import { toast } from "sonner";
+
+// type LoginState = {
+//   success: boolean;
+//   statusCode: number;
+//   message?: string;
+//   data: {
+//     accessToken: string;
+//     refreshToken: string;
+//   };
+// };
 
 type LoginState = {
   success: boolean;
   statusCode: number;
-  message: string;
-  data: {
+  message?: string;
+  messsage?: string; // <-- add this temporarily
+  redirectTo?: string;
+  data?: {
     accessToken: string;
     refreshToken: string;
   };
@@ -56,15 +69,25 @@ export const loginActions = async (
 
     const decodedToken = jwt.decode(result?.data?.accessToken) as JwtPayload;
 
-    if (
-      redirectTo &&
-      typeof redirectTo === "string" &&
-      redirectTo.startsWith("/") &&
-      !redirectTo.startsWith("//")
-    ) {
-      redirect(redirectTo);
-    }
+    // if (
+    //   redirectTo &&
+    //   typeof redirectTo === "string" &&
+    //   redirectTo.startsWith("/") &&
+    //   !redirectTo.startsWith("//")
+    // ) {
+    //   redirect(redirectTo);
+    // }
 
-    redirect("/");
+    // redirect("/");
   }
+
+  return {
+    ...result,
+    redirectTo:
+      redirectTo && redirectTo.startsWith("/") && !redirectTo.startsWith("//")
+        ? redirectTo
+        : "/",
+  };
+
+  // return result;
 };
