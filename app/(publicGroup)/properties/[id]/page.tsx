@@ -151,7 +151,7 @@ const PropertyDetailsPage = async ({
               </div>
 
               <Button className="mt-8 h-12 w-full bg-green-600 text-base hover:bg-green-700">
-                Request Rental
+                Rental Request
               </Button>
             </div>
 

@@ -76,6 +76,22 @@ function ThemeToggle() {
 }
 
 export function Navbar({ user }: { user: any }) {
+  const getDashboardPath = (role: string) => {
+    switch (role) {
+      case "ADMIN":
+        return "/admin-dashboard";
+
+      case "LANDLORD":
+        return "/landlord-dashboard";
+
+      case "TENANT":
+        return "/tenant-dashboard";
+
+      default:
+        return "/";
+    }
+  };
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const router = useRouter();
 
@@ -351,22 +367,14 @@ export function Navbar({ user }: { user: any }) {
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   {userMenuItems.map((item) => (
-                    <DropdownMenuItem
-                      className="text-green-700"
+                    <Link
                       key={item.action}
+                      href={getDashboardPath(user?.data?.role)}
                     >
-                      {/* <item.icon data-icon="inline-start" /> */}
-                      {/* {item.label} */}
-                      <Button
-                        variant="ghost"
-                        className="w-full cursor-pointer justify-start rounded-xl py-6 text-base font-semibold hover:bg-green-600 hover:text-white"
-                      >
+                      <DropdownMenuItem className="text-green-700 cursor-pointer">
                         {item.label}
-                      </Button>
-                      {/* <DropdownMenuShortcut>
-                        {item.shortcut}
-                      </DropdownMenuShortcut> */}
-                    </DropdownMenuItem>
+                      </DropdownMenuItem>
+                    </Link>
                   ))}
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />

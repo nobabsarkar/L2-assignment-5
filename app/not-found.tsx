@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Home, ArrowLeft, SearchX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { HomeIcon, ArrowLeftIcon } from "lucide-react";
 
 const NotFound = () => {
   return (
@@ -26,21 +27,27 @@ const NotFound = () => {
           </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Button size="lg">
-              <Link href="/">
-                <Home className="mr-2 h-4 w-4" />
+            <Button
+              size="lg"
+              className="group h-12 min-w-[180px] rounded-xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+            >
+              <Link className="flex" href="/">
+                <HomeIcon className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
                 Back to Home
               </Link>
             </Button>
 
-            <Button size="lg" variant="outline">
-              <Link href="#">
-                <ArrowLeft className="mr-2 h-4 w-4" />
+            {/* <Button
+              size="lg"
+              variant="outline"
+              className="group h-12 min-w-[180px] rounded-xl border-2 transition-all duration-300 hover:-translate-y-1 hover:bg-muted hover:shadow-lg"
+            >
+              <Link href="javascript:history.back()">
+                <ArrowLeftIcon className="mr-2 h-5 w-5 transition-transform duration-300 group-hover:-translate-x-1" />
                 Go Back
               </Link>
-            </Button>
+            </Button> */}
           </div>
-
           <div className="mt-12 grid w-full grid-cols-3 gap-3">
             <div className="h-2 rounded-full bg-primary/80" />
             <div className="h-2 rounded-full bg-primary/50" />
