@@ -1,4 +1,8 @@
-const DashboardGroupLayout = ({ children }: { children: React.ReactNode }) => {
+const DashboardGroupLayout = async ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   return <div>{children}</div>;
 };
 

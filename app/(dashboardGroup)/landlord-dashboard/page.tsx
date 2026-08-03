@@ -1,9 +1,5 @@
 const LandlordDashboard = () => {
-  return (
-    <div>
-      <h1>Landlord Dashboard</h1>
-    </div>
-  );
+  return <h1>Landlord Dashboards</h1>;
 };
 
 export default LandlordDashboard;

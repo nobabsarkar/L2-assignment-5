@@ -1,7 +1,10 @@
-import React from "react";
+/* eslint-disable @next/next/no-async-client-component */
+/* eslint-disable @next/next/no-img-element */
+
 import { getSingleProperty } from "../../_action/getProperties";
-import { IProperty } from "@/lib/types";
 import { Button } from "@/components/ui/button";
+import { createRentalRequest } from "../../_action/rentalRequest";
+import RentalRequestButton from "../../_components/rentalRequestButton";
 
 const PropertyDetailsPage = async ({
   params,
@@ -150,9 +153,13 @@ const PropertyDetailsPage = async ({
                 </div>
               </div>
 
-              <Button className="mt-8 h-12 w-full bg-green-600 text-base hover:bg-green-700">
+              <RentalRequestButton propertyId={id} />
+              {/* <Button
+                onClick={handleRequest}
+                className="mt-8 h-12 w-full bg-green-600 text-base hover:bg-green-700"
+              >
                 Rental Request
-              </Button>
+              </Button> */}
             </div>
 
             {/* Landlord Information */}
