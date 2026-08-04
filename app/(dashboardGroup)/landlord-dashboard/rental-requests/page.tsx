@@ -1,40 +1,41 @@
-/* eslint-disable @next/next/no-async-client-component */
-/* eslint-disable react-hooks/rules-of-hooks */
-"use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { useState } from "react";
+// import { useState } from "react";
 import { Check, X } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { getRentalRequests } from "../../_action/getRentalRequest";
 
-const initialRequests = [
-  {
-    id: 1,
-    tenant: "Nobab Sarkar",
-    property: "Green Residency",
-    moveIn: "01 Sep 2026",
-    status: "PENDING",
-  },
-  {
-    id: 2,
-    tenant: "Rakib Hossain",
-    property: "City Heights",
-    moveIn: "15 Sep 2026",
-    status: "APPROVED",
-  },
-];
+// const initialRequests = [
+//   {
+//     id: 1,
+//     tenant: "Nobab Sarkar",
+//     property: "Green Residency",
+//     moveIn: "01 Sep 2026",
+//     status: "PENDING",
+//   },
+//   {
+//     id: 2,
+//     tenant: "Rakib Hossain",
+//     property: "City Heights",
+//     moveIn: "15 Sep 2026",
+//     status: "APPROVED",
+//   },
+// ];
 
-const RentalRequest = () => {
-  const [requests, setRequests] = useState(initialRequests);
+const RentalRequest = async () => {
+  const requests = await getRentalRequests();
 
-  const updateStatus = (id: number, status: "APPROVED" | "REJECTED") => {
-    setRequests((prev) =>
-      prev.map((request) =>
-        request.id === id ? { ...request, status } : request,
-      ),
-    );
-  };
+  // const [requests, setRequests] = useState(initialRequests);
+
+  // const updateStatus = (id: number, status: "APPROVED" | "REJECTED") => {
+  //   setRequests((prev) =>
+  //     prev.map((request) =>
+  //       request.id === id ? { ...request, status } : request,
+  //     ),
+  //   );
+  // };
 
   return (
     <div className="space-y-6">
@@ -57,20 +58,20 @@ const RentalRequest = () => {
               <tr className="border-b text-left">
                 <th className="py-3">Tenant</th>
                 <th>Property</th>
-                <th>Move In</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
                 <th>Status</th>
                 <th className="text-right">Action</th>
               </tr>
             </thead>
 
             <tbody>
-              {requests.map((item) => (
+              {requests?.data?.map((item: any) => (
                 <tr key={item.id} className="border-b">
-                  <td className="py-4 font-medium">{item.tenant}</td>
-
-                  <td>{item.property}</td>
-
-                  <td>{item.moveIn}</td>
+                  <td className="py-4 font-medium">{item?.tenant?.name}</td>
+                  <td>{item?.property?.title}</td>
+                  <td>{item?.property?.createdAt}</td>
+                  <td>{item?.property?.updatedAt}</td>
 
                   <td>
                     <Badge
@@ -91,7 +92,7 @@ const RentalRequest = () => {
                       <div className="flex justify-end gap-2">
                         <Button
                           size="sm"
-                          onClick={() => updateStatus(item.id, "APPROVED")}
+                          // onClick={() => updateStatus(item.id, "APPROVED")}
                         >
                           <Check className="mr-1 h-4 w-4" />
                           Approve
@@ -100,7 +101,7 @@ const RentalRequest = () => {
                         <Button
                           size="sm"
                           variant="destructive"
-                          onClick={() => updateStatus(item.id, "REJECTED")}
+                          // onClick={() => updateStatus(item.id, "REJECTED")}
                         >
                           <X className="mr-1 h-4 w-4" />
                           Reject
@@ -121,18 +122,24 @@ const RentalRequest = () => {
 
       {/* Mobile Cards */}
       <div className="grid gap-4 lg:hidden">
-        {requests.map((item) => (
+        {requests?.data?.map((item: any) => (
           <Card key={item.id}>
             <CardContent className="space-y-4 pt-6">
               <div>
-                <h3 className="text-lg font-semibold">{item.tenant}</h3>
-                <p className="text-muted-foreground">{item.property}</p>
+                <h3 className="text-lg font-semibold">{item?.tenant?.name}</h3>
+                <p className="text-muted-foreground">{item?.property?.title}</p>
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">Move In</span>
+                <span className="text-sm text-muted-foreground">
+                  CreatedAt: {item?.property?.createdAt}
+                </span>
+                <span className="text-sm text-muted-foreground">
+                  UpdatedAt:{item?.property?.updatedAt}
+                </span>
 
-                <span className="font-medium">{item.moveIn}</span>
+                {/* <span className="font-medium">{item?.property?.createdAt}</span> */}
+                {/* <span className="font-medium">{item?.property?.updatedAt}</span> */}
               </div>
 
               <Badge
@@ -151,7 +158,7 @@ const RentalRequest = () => {
                 <div className="flex gap-2">
                   <Button
                     className="flex-1"
-                    onClick={() => updateStatus(item.id, "APPROVED")}
+                    // onClick={() => updateStatus(item.id, "APPROVED")}
                   >
                     Approve
                   </Button>
@@ -159,7 +166,7 @@ const RentalRequest = () => {
                   <Button
                     className="flex-1"
                     variant="destructive"
-                    onClick={() => updateStatus(item.id, "REJECTED")}
+                    // onClick={() => updateStatus(item.id, "REJECTED")}
                   >
                     Reject
                   </Button>
