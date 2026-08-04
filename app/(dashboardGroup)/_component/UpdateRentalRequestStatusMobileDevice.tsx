@@ -16,7 +16,6 @@ const UpdateRentalRequestStatusMobileDevice = ({ requests }: any) => {
     status: "APPROVED" | "REJECTED",
   ) => {
     const result = await landlordUpdateRentalRequestStatus(id, status);
-    console.log(result);
 
     if (result?.success && result?.data?.status === "APPROVED") {
       toast.success("Request Approved Tenant can now pay");
