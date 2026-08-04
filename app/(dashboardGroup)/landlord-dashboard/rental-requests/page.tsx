@@ -6,6 +6,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { getRentalRequests } from "../../_action/getRentalRequest";
+import UpdateRentalRequestStatus from "../../_component/UpdateRentalRequestStatus";
+import UpdateRentalRequestStatusMobileDevice from "../../_component/UpdateRentalRequestStatusMobileDevice";
 
 // const initialRequests = [
 //   {
@@ -26,6 +28,11 @@ import { getRentalRequests } from "../../_action/getRentalRequest";
 
 const RentalRequest = async () => {
   const requests = await getRentalRequests();
+
+  // const changeRentalRequestStatus = async (id: string) => {
+  //   const updateRentalReques = await updateRentalRequestStatus(id);
+  //   console.log(updateRentalReques);
+  // };
 
   // const [requests, setRequests] = useState(initialRequests);
 
@@ -88,11 +95,13 @@ const RentalRequest = async () => {
                   </td>
 
                   <td>
-                    {item.status === "PENDING" ? (
+                    <UpdateRentalRequestStatus item={item} />
+                    {/* {item.status === "PENDING" ? (
                       <div className="flex justify-end gap-2">
                         <Button
                           size="sm"
-                          // onClick={() => updateStatus(item.id, "APPROVED")}
+                          // onClick={() => changeRentalRequestStatus(item?.id)}
+                          onClick={() => updateRentalRequestStatus(item?.id)}
                         >
                           <Check className="mr-1 h-4 w-4" />
                           Approve
@@ -111,7 +120,7 @@ const RentalRequest = async () => {
                       <p className="text-right text-sm text-muted-foreground">
                         Completed
                       </p>
-                    )}
+                    )} */}
                   </td>
                 </tr>
               ))}
@@ -122,7 +131,8 @@ const RentalRequest = async () => {
 
       {/* Mobile Cards */}
       <div className="grid gap-4 lg:hidden">
-        {requests?.data?.map((item: any) => (
+        <UpdateRentalRequestStatusMobileDevice requests={requests} />
+        {/* {requests?.data?.map((item: any) => (
           <Card key={item.id}>
             <CardContent className="space-y-4 pt-6">
               <div>
@@ -138,8 +148,8 @@ const RentalRequest = async () => {
                   UpdatedAt:{item?.property?.updatedAt}
                 </span>
 
-                {/* <span className="font-medium">{item?.property?.createdAt}</span> */}
-                {/* <span className="font-medium">{item?.property?.updatedAt}</span> */}
+                <span className="font-medium">{item?.property?.createdAt}</span>
+                <span className="font-medium">{item?.property?.updatedAt}</span>
               </div>
 
               <Badge
@@ -157,16 +167,16 @@ const RentalRequest = async () => {
               {item.status === "PENDING" && (
                 <div className="flex gap-2">
                   <Button
-                    className="flex-1"
-                    // onClick={() => updateStatus(item.id, "APPROVED")}
+                    className="flex-1 cursor-pointer"
+                    onClick={() => updateStatus(item.id, "APPROVED")}
                   >
                     Approve
                   </Button>
 
                   <Button
-                    className="flex-1"
+                    className="flex-1 cursor-pointer"
                     variant="destructive"
-                    // onClick={() => updateStatus(item.id, "REJECTED")}
+                    onClick={() => updateStatus(item.id, "REJECTED")}
                   >
                     Reject
                   </Button>
@@ -174,7 +184,7 @@ const RentalRequest = async () => {
               )}
             </CardContent>
           </Card>
-        ))}
+        ))} */}
       </div>
     </div>
   );
