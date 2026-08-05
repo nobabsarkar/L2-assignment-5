@@ -1,0 +1,25 @@
+"use server";
+
+import { cookies } from "next/headers";
+
+export const paymentProperty = async (rentalRequestId: string) => {
+  const token = (await cookies()).get("accessToken")?.value;
+
+  const res = await fetch(
+    `${process.env.BACKEND_API_URL}/api/payments/create`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: token!,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        rentalRequestId,
+      }),
+    },
+  );
+
+  const result = await res.json();
+
+  return result;
+};

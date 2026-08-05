@@ -12,11 +12,10 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import PaymentButton from "../../_component/PaymentButton";
 
 const MyRequest = async () => {
   const rentalRequests = await getTenantRentalRequest();
-
-  // console.log(rentalRequests);
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -98,39 +97,40 @@ const MyRequest = async () => {
     }
   };
 
-  const renderActionButton = (status: string) => {
+  const renderActionButton = (status: string, rentalRequestId: string) => {
     switch (status) {
       case "PENDING":
         return (
-          <Button size="sm" disabled>
+          <Button className="w-full" size="sm" disabled>
             Waiting
           </Button>
         );
 
       case "APPROVED":
         return (
-          <Button className="cursor-pointer" size="sm">
-            Pay Now
-          </Button>
+          <PaymentButton rentalRequestId={rentalRequestId} />
+          // <Button className="cursor-pointer w-full" size="sm">
+          //   Pay Now
+          // </Button>
         );
 
       case "REJECTED":
         return (
-          <Button size="sm" variant="destructive" disabled>
+          <Button className="w-full" size="sm" variant="destructive" disabled>
             Rejected
           </Button>
         );
 
       case "ACTIVE":
         return (
-          <Button className="cursor-pointer" size="sm">
+          <Button className="cursor-pointer w-full" size="sm">
             Leave Review
           </Button>
         );
 
       case "COMPLETED":
         return (
-          <Button className="cursor-pointer" size="sm" variant="outline">
+          <Button className="cursor-pointer w-full" size="sm" variant="outline">
             View Details
           </Button>
         );
@@ -171,7 +171,7 @@ const MyRequest = async () => {
                 <TableCell>{getStatusBadge(item?.status)}</TableCell>
                 <TableCell>{getPaymentBadge(item.status)}</TableCell>
                 <TableCell className="text-right">
-                  {renderActionButton(item.status)}
+                  {renderActionButton(item.status, item?.id)}
                 </TableCell>
               </TableRow>
             </TableBody>
@@ -179,7 +179,6 @@ const MyRequest = async () => {
         </Table>
       </div>
 
-      {/* ================= Mobile ================= */}
       {rentalRequests?.data?.map((item: any) => (
         <div key={item.id} className="space-y-4 md:hidden ">
           <div className="rounded-xl border p-4 shadow-sm mb-5">
@@ -213,9 +212,9 @@ const MyRequest = async () => {
               </div>
             </div>
 
-            <Button className="mt-5 w-full">
-              {renderActionButton(item.status)}
-            </Button>
+            <div className="mt-5">
+              {renderActionButton(item.status, item?.id)}
+            </div>
           </div>
         </div>
       ))}
