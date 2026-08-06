@@ -1,4 +1,4 @@
-import { FolderKanban, Home, Users } from "lucide-react";
+import { FolderKanban, Home, LucideTableProperties, Users } from "lucide-react";
 
 import { ISidebarItems } from "@/lib/types";
 import { TENANT_SIDEBAR_ITEMS } from "./tenantSidebarItems";
@@ -16,9 +16,14 @@ const ADMIN_SIDEBAR_ITEMS: ISidebarItems[] = [
     icon: Users,
   },
   {
-    label: "Categories",
-    href: "/admin-dashboard/categories",
+    label: "Properties",
+    href: "/admin-dashboard/properties",
     icon: FolderKanban,
+  },
+  {
+    label: "Rentals",
+    href: "/admin-dashboard/rentals",
+    icon: LucideTableProperties,
   },
 ];
 
