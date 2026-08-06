@@ -3,29 +3,29 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Home, ClipboardList, CreditCard } from "lucide-react";
+import { Menu } from "lucide-react";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ISidebarItems, NavbarProps } from "@/lib/types";
 import { sidebarMenuItems } from "../../_config/adminSidebarItems";
 
-const tenantMenus = [
-  {
-    title: "Dashboard",
-    href: "/tenant-dashboard",
-    icon: Home,
-  },
-  {
-    title: "My Requests",
-    href: "/tenant-dashboard/my-requests",
-    icon: ClipboardList,
-  },
-  {
-    title: "Payment History",
-    href: "/tenant-dashboard/payment-history",
-    icon: CreditCard,
-  },
-];
+// const tenantMenus = [
+//   {
+//     title: "Dashboard",
+//     href: "/tenant-dashboard",
+//     icon: Home,
+//   },
+//   {
+//     title: "My Requests",
+//     href: "/tenant-dashboard/my-requests",
+//     icon: ClipboardList,
+//   },
+//   {
+//     title: "Payment History",
+//     href: "/tenant-dashboard/payment-history",
+//     icon: CreditCard,
+//   },
+// ];
 
 export default function Sidebar({ user }: NavbarProps) {
   let navItems: ISidebarItems[] = [];

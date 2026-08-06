@@ -12,7 +12,7 @@ const ADMIN_SIDEBAR_ITEMS: ISidebarItems[] = [
   },
   {
     label: "Manage Users",
-    href: "/admin-dashboard/users",
+    href: "/admin-dashboard/manage-users",
     icon: Users,
   },
   {
