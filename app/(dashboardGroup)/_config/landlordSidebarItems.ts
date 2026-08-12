@@ -7,16 +7,16 @@ export const LANDLORD_SIDEBAR_ITEMS: ISidebarItems[] = [
     href: "/landlord-dashboard",
     icon: Home,
   },
-  // {
-  //   label: "Create Property",
-  //   href: "/landlord-dashboard/create-property",
-  //   icon: House,
-  // },
-  // {
-  //   label: "My Properties",
-  //   href: "/landlord-dashboard/properties",
-  //   icon: Building2,
-  // },
+  {
+    label: "Create Property",
+    href: "/landlord-dashboard/create-property",
+    icon: House,
+  },
+  {
+    label: "My Properties",
+    href: "/landlord-dashboard/properties",
+    icon: Building2,
+  },
   {
     label: "Rental Requests",
     href: "/landlord-dashboard/rental-requests",

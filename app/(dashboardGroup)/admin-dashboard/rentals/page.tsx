@@ -18,7 +18,6 @@ const Rentals = async () => {
 
   return (
     <div className="space-y-5">
-      {/* ================= Mobile Cards ================= */}
       <div className="grid gap-4 md:hidden">
         {rentals?.data?.map((request: any) => (
           <div
@@ -86,7 +85,6 @@ const Rentals = async () => {
         ))}
       </div>
 
-      {/* ================= Desktop Table ================= */}
       <div className="hidden overflow-x-auto rounded-xl border md:block">
         <Table>
           <TableHeader>
