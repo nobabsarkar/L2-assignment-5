@@ -14,7 +14,7 @@ export const LANDLORD_SIDEBAR_ITEMS: ISidebarItems[] = [
   },
   {
     label: "My Properties",
-    href: "/landlord-dashboard/properties",
+    href: "/landlord-dashboard/my-properties",
     icon: Building2,
   },
   {

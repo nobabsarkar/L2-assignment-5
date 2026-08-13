@@ -1,13 +1,24 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { createProperty } from "../_action/createProperty";
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
+import { toast } from "sonner";
 
 const CreatePropertyComponent = ({ categories }: any) => {
   const [state, action, pending] = useActionState(createProperty, false);
+
+  useEffect(() => {
+    if (!state) return;
+
+    if (state?.success) {
+      toast.success("Property Created Successfully");
+    } else {
+      toast.error(state?.message || "Something is wrong!");
+    }
+  }, [state]);
 
   return (
     <form action={action} className="space-y-6">
@@ -118,7 +129,7 @@ const CreatePropertyComponent = ({ categories }: any) => {
 
           <select
             id="categoryId"
-            name="category"
+            name="categoryId"
             required
             className="w-full rounded-md border bg-background px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
           >
@@ -168,7 +179,7 @@ const CreatePropertyComponent = ({ categories }: any) => {
           <div className="flex flex-col gap-2 sm:flex-row">
             <input
               type="url"
-              name="imageUrl"
+              name="images"
               placeholder="image url"
               required
               className="w-full rounded-md border bg-background px-3 py-2.5 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
@@ -178,10 +189,10 @@ const CreatePropertyComponent = ({ categories }: any) => {
       </div>
 
       {/* Submit */}
-      <div className="flex flex-col-reverse gap-3 border-t pt-6 sm:flex-row sm:justify-end">
+      <div className="flex w-full flex-col-reverse gap-3 border-t pt-6 sm:flex-row sm:justify-end">
         <Button
           type="submit"
-          className="rounded-md cursor-pointer bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
+          className="rounded-md  cursor-pointer bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
         >
           {pending ? <Spinner /> : "Create Property"}
         </Button>

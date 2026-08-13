@@ -1,6 +1,7 @@
 "use server";
 
 import { cookies } from "next/headers";
+import { toast } from "sonner";
 
 export const createProperty = async (
   redirectTo: string,
@@ -9,12 +10,12 @@ export const createProperty = async (
   const title = formData.get("title");
   const description = formData.get("description");
   const location = formData.get("location");
-  const price = formData.get("price");
-  const bedrooms = formData.get("bedrooms");
-  const bathrooms = formData.get("bathrooms");
-  const category = formData.get("category");
+  const price = Number(formData.get("price"));
+  const bedrooms = Number(formData.get("bedrooms"));
+  const bathrooms = Number(formData.get("bathrooms"));
+  const categoryId = formData.get("categoryId");
   const amenities = formData.getAll("amenities");
-  const imageUrl = formData.get("imageUrl");
+  const images = formData.getAll("images");
 
   const payload = {
     title,
@@ -23,9 +24,9 @@ export const createProperty = async (
     price,
     bedrooms,
     bathrooms,
-    category,
+    categoryId,
     amenities,
-    imageUrl,
+    images,
   };
 
   const token = (await cookies()).get("accessToken")?.value;
