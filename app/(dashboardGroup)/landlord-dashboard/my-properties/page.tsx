@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Edit, Trash2, MapPin, BedDouble, Bath } from "lucide-react";
+
+import { MapPin, BedDouble, Bath } from "lucide-react";
 import { landlordGetAllProperties } from "../../_action/landlordGetAllProperties";
+import DeleteAndUpdateButton from "../../_component/DeleteAndUpdateButton";
 
 const MyProperties = async () => {
   const properties = await landlordGetAllProperties();
@@ -22,7 +24,7 @@ const MyProperties = async () => {
               {/* Image */}
               <div className="h-52 w-full">
                 <img
-                  src={property.images}
+                  src={property.images[0]}
                   alt={property.title}
                   className="h-full w-full object-cover"
                 />
@@ -69,17 +71,7 @@ const MyProperties = async () => {
                 </div>
 
                 {/* Actions */}
-                <div className="mt-5 flex gap-3">
-                  <button className="flex cursor-pointer flex-1 items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700">
-                    <Edit size={16} />
-                    Edit
-                  </button>
-
-                  <button className="flex cursor-pointer flex-1 items-center justify-center gap-2 rounded-lg bg-red-50 px-4 py-2.5 text-sm font-medium text-red-600 hover:bg-red-100">
-                    <Trash2 size={16} />
-                    Delete
-                  </button>
-                </div>
+                <DeleteAndUpdateButton property={property} />
               </div>
             </div>
           ))}

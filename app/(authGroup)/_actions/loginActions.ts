@@ -32,8 +32,6 @@ export const loginActions = async (
   prevState: LoginState,
   formData: FormData,
 ) => {
-  console.log(redirectTo);
-
   const email = formData.get("email");
   const password = formData.get("password");
 
