@@ -148,7 +148,7 @@ const MyRequest = async () => {
             <TableRow>
               <TableHead>Property</TableHead>
               <TableHead>Landlord</TableHead>
-              <TableHead>Monthly Rent</TableHead>
+              <TableHead>Price</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Payment</TableHead>
               <TableHead className="text-right">Action</TableHead>

@@ -23,3 +23,21 @@ export const paymentProperty = async (rentalRequestId: string) => {
 
   return result;
 };
+
+export const getSinglePayment = async (id: string) => {
+  const token = (await cookies()).get("accessToken")?.value;
+
+  const res = await fetch(`${process.env.BACKEND_API_URL}/api/payments/${id}`, {
+    method: "GET",
+    headers: {
+      Authorization: token!,
+      "Content-Type": "application/json",
+    },
+  });
+
+  const result = await res.json();
+
+  console.log(result);
+
+  return result;
+};

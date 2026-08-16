@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { paymentProperty } from "../_action/payment";
+import { toast } from "sonner";
 
 type PaymentButtonProps = {
   rentalRequestId: string;
@@ -14,6 +15,7 @@ const PaymentButton = ({ rentalRequestId }: PaymentButtonProps) => {
     const result = await paymentProperty(rentalRequestId);
     if (result?.success) {
       window.location.href = result.data;
+      // toast.success("Payment Successfully");
     }
 
     console.log(result);
