@@ -1,20 +1,22 @@
-import { getSinglePayment } from "../(dashboardGroup)/_action/payment";
+// import { getSinglePayment } from "../(dashboardGroup)/_action/payment";
 
-const PaymentSuccess = async ({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) => {
-  const { id } = await params;
+// const PaymentSuccess = async ({
+//   params,
+// }: {
+//   params: Promise<{ id: string }>;
+// }) => {
+//   const { id } = await params;
 
-  const paymentData = await getSinglePayment(id);
-  console.log(paymentData);
+//   console.log(id);
 
-  return (
-    <div>
-      <h1>Payment Success: {id}</h1>
-    </div>
-  );
-};
+//   const paymentData = await getSinglePayment(id);
+//   console.log(paymentData);
 
-export default PaymentSuccess;
+//   return (
+//     <div>
+//       <h1>Payment Success: {id}</h1>
+//     </div>
+//   );
+// };
+
+// export default PaymentSuccess;

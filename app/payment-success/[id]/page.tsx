@@ -6,6 +6,7 @@ const PaymentSuccess = async ({
   params: Promise<{ id: string }>;
 }) => {
   const { id } = await params;
+  console.log(id);
 
   const paymentData = await getSinglePayment(id);
   console.log(paymentData);

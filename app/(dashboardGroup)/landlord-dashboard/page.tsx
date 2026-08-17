@@ -3,9 +3,11 @@ import { Building2, ClipboardList, Wallet } from "lucide-react";
 import { getRentalRequests } from "../_action/getRentalRequest";
 import { Card, CardContent } from "@/components/ui/card";
 import { getAllProperties } from "../_action/adminActions";
+import { LandlordTotalEarning } from "../_action/payment";
 
 const LandlordDashboard = async () => {
   const requests = await getRentalRequests();
+  const totalEarning = await LandlordTotalEarning();
 
   const pendingCound = requests?.data?.filter(
     (request: any) => request?.status === "PENDING",
@@ -78,7 +80,7 @@ const LandlordDashboard = async () => {
               </p>
 
               <h2 className="mt-3 text-3xl font-bold tracking-tight transition-transform duration-300 group-hover:scale-105">
-                ৳85,000
+                ${totalEarning?.data?.totalEarnings}
               </h2>
 
               <p className="mt-2 text-sm text-muted-foreground">
