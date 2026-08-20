@@ -3,6 +3,7 @@ import { getAllPaymentHistory } from "../../_action/payment";
 
 const PaymentHistory = async () => {
   const allPaymentHistory = await getAllPaymentHistory();
+  console.log(allPaymentHistory);
 
   const payments = allPaymentHistory?.data || [];
 

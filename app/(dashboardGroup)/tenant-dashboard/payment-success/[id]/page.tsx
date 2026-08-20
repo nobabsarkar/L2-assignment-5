@@ -9,7 +9,7 @@ const PaymentSuccess = async ({
   const { id } = await params;
 
   const paymentData = await getSinglePayment(id);
-  // console.log(paymentData?.data);
+  console.log(paymentData?.data);
 
   return (
     <div className="min-h-screen bg-muted/30 px-4 py-10">

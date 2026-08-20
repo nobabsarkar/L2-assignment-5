@@ -13,9 +13,13 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import PaymentButton from "../../_component/PaymentButton";
+import { getAllPaymentHistory, getSinglePayment } from "../../_action/payment";
 
 const MyRequest = async () => {
-  const rentalRequests = await getTenantRentalRequest();
+  // const rentalRequests = await getTenantRentalRequest();
+
+  const paymentHistory = await getAllPaymentHistory();
+  console.log(paymentHistory);
 
   const getStatusBadge = (status: string) => {
     switch (status) {
@@ -110,7 +114,7 @@ const MyRequest = async () => {
         return (
           <PaymentButton rentalRequestId={rentalRequestId} />
           // <Button className="cursor-pointer w-full" size="sm">
-          //   Pay Now
+          //   Pay Nowsss
           // </Button>
         );
 
@@ -155,41 +159,46 @@ const MyRequest = async () => {
             </TableRow>
           </TableHeader>
 
-          {rentalRequests?.data?.map((item: any) => (
-            <TableBody key={item.id}>
-              <TableRow>
-                <TableCell>
-                  <div>
-                    <p className="font-semibold">{item?.property?.title}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {item?.property?.location}
-                    </p>
-                  </div>
-                </TableCell>
-                <TableCell>{item?.property?.landlord?.name}</TableCell>
-                <TableCell>${item?.property?.price}</TableCell>
-                <TableCell>{getStatusBadge(item?.status)}</TableCell>
-                <TableCell>{getPaymentBadge(item.status)}</TableCell>
-                <TableCell className="text-right">
-                  {renderActionButton(item.status, item?.id)}
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          ))}
+          {paymentHistory?.data?.map((item: any) => {
+            console.log(item);
+            return (
+              <TableBody key={item.id}>
+                <TableRow>
+                  <TableCell>
+                    <div>
+                      <p className="font-semibold">
+                        {item?.rentalRequest?.property?.title}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {item?.rentalRequest?.property?.locatiion}
+                      </p>
+                    </div>
+                  </TableCell>
+                  <TableCell>{item?.property?.landlord?.name}</TableCell>
+                  <TableCell>${item?.amount}</TableCell>
+                  <TableCell>{getStatusBadge(item?.status)}</TableCell>
+                  <TableCell>{getPaymentBadge(item.status)}</TableCell>
+                  <TableCell className="text-right">
+                    {renderActionButton(item.status, item?.id)}
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            );
+          })}
         </Table>
       </div>
 
-      {rentalRequests?.data?.map((item: any) => (
+      {paymentHistory?.data?.map((item: any) => (
         <div key={item.id} className="space-y-4 md:hidden ">
           <div className="rounded-xl border p-4 shadow-sm mb-5">
             <div className="flex items-start justify-between">
               <div>
                 <h3 className="font-semibold text-base">
-                  {item?.property?.title}
+                  {item?.rentalRequest?.property?.title}
                 </h3>
-                <p className="text-sm text-muted-foreground">
-                  {item?.property?.location}
-                </p>
+                {/* <p className="text-sm text-muted-foreground">
+                  {item?.rentalRequest?.property?.locatiion}
+                </p> */}
               </div>
 
               {getStatusBadge(item.status)}
