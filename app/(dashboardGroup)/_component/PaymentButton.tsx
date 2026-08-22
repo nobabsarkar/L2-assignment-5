@@ -8,6 +8,8 @@ type PaymentButtonProps = {
 };
 
 const PaymentButton = ({ rentalRequestId }: PaymentButtonProps) => {
+  //
+
   const handlePayment = async () => {
     const result = await paymentProperty(rentalRequestId);
     if (result?.success) {

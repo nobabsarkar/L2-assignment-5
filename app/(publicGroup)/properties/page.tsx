@@ -21,6 +21,7 @@ import {
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectValue } from "@base-ui/react";
+import Image from "next/image";
 
 type Props = {
   searchParams: Promise<{
@@ -199,9 +200,11 @@ const properties = async ({ searchParams }: Props) => {
               className="group overflow-hidden rounded-2xl border bg-background shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
             >
               <div className="relative overflow-hidden">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
                   alt={property.title}
+                  height={500}
+                  width={500}
                   className="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
 
@@ -235,8 +238,6 @@ const properties = async ({ searchParams }: Props) => {
                   <h4 className="text-2xl font-bold text-green-600">
                     ${property.price}
                   </h4>
-
-                  <span className="text-xs text-muted-foreground">/month</span>
                 </div>
 
                 <div className="flex items-center justify-between rounded-lg bg-muted/40 px-4 py-3 text-sm">

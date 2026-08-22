@@ -12,6 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import Image from "next/image";
 
 const Rentals = async () => {
   const rentals = await getAllRentals();
@@ -24,8 +25,10 @@ const Rentals = async () => {
             key={request.id}
             className="rounded-xl border bg-card p-4 shadow-sm"
           >
-            <img
-              src={request.property.images[0]}
+            <Image
+              src={request.property.images?.[0]}
+              height={400}
+              width={400}
               alt={request.property.title}
               className="h-44 w-full rounded-lg object-cover"
             />
@@ -105,8 +108,10 @@ const Rentals = async () => {
             {rentals?.data?.map((rent: any) => (
               <TableRow key={rent.id}>
                 <TableCell>
-                  <img
-                    src={rent.property.images[0]}
+                  <Image
+                    src={rent.property.images?.[0]}
+                    height={200}
+                    width={200}
                     alt={rent.property.title}
                     className="h-14 w-20 rounded-md object-cover"
                   />

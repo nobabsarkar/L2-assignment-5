@@ -60,7 +60,6 @@ const PropertyDetailsPage = async ({
               </div>
 
               <div className="rounded-xl bg-green-600 px-5 py-3 text-center text-white shadow">
-                <p className="text-sm">Monthly Rent</p>
                 <h2 className="text-3xl font-bold">${property?.price}</h2>
               </div>
             </div>
@@ -129,8 +128,6 @@ const PropertyDetailsPage = async ({
             {/* Price Card */}
             <div className="rounded-2xl border bg-background p-6 shadow-lg">
               <div className="mb-6 text-center">
-                <p className="text-muted-foreground">Monthly Rent</p>
-
                 <h2 className="mt-2 text-4xl font-bold text-green-600">
                   ${property?.price}
                 </h2>
@@ -202,10 +199,6 @@ const PropertyDetailsPage = async ({
                   </p>
                 </div>
               </div>
-
-              <Button variant="outline" className="mt-6 w-full">
-                Contact Owner
-              </Button>
             </div>
           </div>
         </div>

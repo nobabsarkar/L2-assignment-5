@@ -119,9 +119,11 @@ const HomePage = async () => {
       <section className="relative overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1920&auto=format&fit=crop"
             alt="Hero"
+            width={1920}
+            height={1080}
             className="h-full w-full object-cover"
           />
 
@@ -178,9 +180,11 @@ const HomePage = async () => {
               <p className="text-muted-foreground">Secure Payment</p>
             </div>
 
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=900&auto=format&fit=crop"
               alt=""
+              height={400}
+              width={400}
               className="mx-auto w-[500px] rounded-3xl border shadow-2xl"
             />
           </div>
@@ -273,8 +277,6 @@ const HomePage = async () => {
                   <h4 className="text-2xl font-bold text-green-600">
                     ${property.price}
                   </h4>
-
-                  <span className="text-xs text-muted-foreground">/month</span>
                 </div>
 
                 <div className="flex items-center justify-between rounded-lg bg-muted/40 px-4 py-3 text-sm">

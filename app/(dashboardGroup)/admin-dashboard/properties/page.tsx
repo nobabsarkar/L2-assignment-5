@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const Properties = async () => {
   const properties = await getAllProperties();
@@ -25,9 +26,11 @@ const Properties = async () => {
             key={property.id}
             className="rounded-xl border bg-card p-4 shadow-sm"
           >
-            <img
-              src={property.images[0]}
+            <Image
+              src={property.images?.[0]}
               alt={property.title}
+              height={400}
+              width={400}
               className="h-40 w-full rounded-lg object-cover"
             />
 
@@ -82,9 +85,11 @@ const Properties = async () => {
             {properties?.data?.map((property: any) => (
               <TableRow key={property.id}>
                 <TableCell>
-                  <img
-                    src={property.images[0]}
+                  <Image
+                    src={property.images?.[0]}
                     alt={property.title}
+                    height={200}
+                    width={200}
                     className="h-14 w-20 rounded-md object-cover"
                   />
                 </TableCell>
