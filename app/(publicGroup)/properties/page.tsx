@@ -201,7 +201,7 @@ const properties = async ({ searchParams }: Props) => {
             >
               <div className="relative overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
+                  src={property?.images?.[0]}
                   alt={property.title}
                   height={500}
                   width={500}

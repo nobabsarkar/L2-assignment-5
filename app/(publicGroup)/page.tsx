@@ -240,9 +240,11 @@ const HomePage = async () => {
             >
               {/* Image */}
               <div className="relative overflow-hidden">
-                <img
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
+                <Image
+                  src={property?.images?.[0]}
                   alt={property.title}
+                  height={400}
+                  width={400}
                   className="h-52 w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
 

@@ -14,6 +14,7 @@ import {
   User,
   CreditCard,
   Settings,
+  User2Icon,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -347,8 +348,10 @@ export function Navbar({ user }: { user: any }) {
                 }
               >
                 <Avatar className="size-9 cursor-pointer">
-                  <AvatarImage src="/diverse-avatars.png" alt="Jane Doe" />
-                  <AvatarFallback>JD</AvatarFallback>
+                  {/* <AvatarImage src="/diverse-avatars.png" alt="Jane Doe" /> */}
+                  <AvatarFallback>
+                    <User2Icon />
+                  </AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">

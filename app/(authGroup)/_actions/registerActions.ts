@@ -3,9 +3,9 @@
 import { redirect } from "next/navigation";
 
 export const registerActions = async (
-  redirectTo: string,
+  previousState: boolean,
   formData: FormData,
-) => {
+): Promise<boolean> => {
   const name = formData.get("name");
   const email = formData.get("email");
   const password = formData.get("password");
@@ -30,4 +30,6 @@ export const registerActions = async (
   if (result?.success) {
     redirect("/login");
   }
+
+  return false;
 };

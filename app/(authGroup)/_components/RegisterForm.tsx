@@ -48,7 +48,7 @@ const RegisterForm = () => {
           required
           className="p-5"
         />
-        <Select onValueChange={setRole}>
+        <Select onValueChange={(value) => setRole(String(value ?? ""))}>
           <SelectTrigger className="w-full p-5">
             <SelectValue placeholder="Select Role" />
           </SelectTrigger>
