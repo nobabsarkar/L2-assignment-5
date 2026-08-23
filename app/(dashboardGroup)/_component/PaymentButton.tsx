@@ -26,19 +26,6 @@ const PaymentButton = ({ rentalRequestId }: PaymentButtonProps) => {
       >
         Pay Now
       </Button>
-      {/* {status === "COMPLETED" ? (
-        <Button className="w-full" size="sm" variant="outline" disabled>
-          ✓ Paid
-        </Button>
-      ) : (
-        <Button
-          onClick={handlePayment}
-          className="cursor-pointer w-full"
-          size="sm"
-        >
-          Pay Now
-        </Button>
-      )} */}
     </>
   );
 };

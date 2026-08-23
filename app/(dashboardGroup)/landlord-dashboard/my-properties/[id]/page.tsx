@@ -2,7 +2,6 @@
 import { getAllCategoryes } from "@/app/(dashboardGroup)/_action/getAllCaategory";
 import UpdatePropertyForm from "@/app/(dashboardGroup)/_component/UpdatePropertyForm";
 import { getSingleProperty } from "@/app/(publicGroup)/_action/getProperties";
-import { Button } from "@/components/ui/button";
 
 const UpdateProperty = async ({
   params,

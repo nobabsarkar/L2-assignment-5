@@ -2,7 +2,6 @@
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -57,17 +56,6 @@ const ManageUsers = async () => {
                 </div>
 
                 <AdminGetAllUser user={user} />
-
-                {/* {user.status === "ACTIVE" ? (
-                  <Button
-                    variant="destructive"
-                    className="w-full cursor-pointer"
-                  >
-                    BLOCK
-                  </Button>
-                ) : (
-                  <Button className="w-full cursor-pointer">ACTIVE</Button>
-                )} */}
               </div>
             </div>
           ))}
@@ -107,19 +95,6 @@ const ManageUsers = async () => {
                   </TableCell>
                   <TableCell className="text-right">
                     <AdminGetAllUser user={user} />
-                    {/* {user.status === "ACTIVE" ? (
-                      <Button
-                        className="cursor-pointer"
-                        size="sm"
-                        variant="destructive"
-                      >
-                        BLOCK
-                      </Button>
-                    ) : (
-                      <Button className="cursor-pointer" size="sm">
-                        ACTIVE
-                      </Button>
-                    )} */}
                   </TableCell>
                 </TableRow>
               ))}

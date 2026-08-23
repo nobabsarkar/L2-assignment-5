@@ -81,8 +81,6 @@ const Rentals = async () => {
                   {request.property.bathrooms}
                 </p>
               </div>
-
-              {/* <Button className="w-full">View Details</Button> */}
             </div>
           </div>
         ))}
@@ -99,8 +97,6 @@ const Rentals = async () => {
               <TableHead>Location</TableHead>
               <TableHead>Price</TableHead>
               <TableHead>Status</TableHead>
-              {/* <TableHead>Created</TableHead>
-              <TableHead className="text-right">Action</TableHead> */}
             </TableRow>
           </TableHeader>
 
@@ -142,20 +138,6 @@ const Rentals = async () => {
                     {rent.status}
                   </Badge>
                 </TableCell>
-
-                {/* <TableCell>
-                  {new Date(rent.property.createdAt).toLocaleDateString()}
-                </TableCell> */}
-
-                {/* <TableCell className="text-right">
-                  <div className="flex justify-end gap-2">
-                    <Button size="sm">Details</Button>
-
-                    <Button size="sm" variant="destructive">
-                      Remove
-                    </Button>
-                  </div>
-                </TableCell> */}
               </TableRow>
             ))}
           </TableBody>

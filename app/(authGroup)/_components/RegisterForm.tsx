@@ -8,7 +8,6 @@ import Link from "next/link";
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
@@ -69,9 +68,6 @@ const RegisterForm = () => {
             Login
           </Link>
         </p>
-        {/* <Button className="p-5" type="submit">
-          {pending ? <Spinner /> : "Login"}
-        </Button> */}
       </Card>
     </form>
   );

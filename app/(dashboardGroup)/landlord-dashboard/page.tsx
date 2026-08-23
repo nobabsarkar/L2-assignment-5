@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Building2, ClipboardList, Wallet } from "lucide-react";
 import { getRentalRequests } from "../_action/getRentalRequest";
-import { Card, CardContent } from "@/components/ui/card";
-import { getAllProperties } from "../_action/adminActions";
 import { LandlordTotalEarning } from "../_action/payment";
 
 const LandlordDashboard = async () => {
@@ -12,8 +10,6 @@ const LandlordDashboard = async () => {
   const pendingCound = requests?.data?.filter(
     (request: any) => request?.status === "PENDING",
   ).length;
-
-  // const properties = await getAllProperties();
 
   return (
     <>

@@ -3,17 +3,6 @@
 import { cookies } from "next/headers";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { redirect } from "next/navigation";
-import { toast } from "sonner";
-
-// type LoginState = {
-//   success: boolean;
-//   statusCode: number;
-//   message?: string;
-//   data: {
-//     accessToken: string;
-//     refreshToken: string;
-//   };
-// };
 
 type LoginState = {
   success: boolean;
@@ -74,17 +63,6 @@ export const loginActions = async (
     } else if (decodedToken?.role === "TENANT") {
       redirect("/tenant-dashboard");
     }
-
-    // if (
-    //   redirectTo &&
-    //   typeof redirectTo === "string" &&
-    //   redirectTo.startsWith("/") &&
-    //   !redirectTo.startsWith("//")
-    // ) {
-    //   redirect(redirectTo);
-    // }
-
-    // redirect("/");
   }
 
   return {
@@ -94,6 +72,4 @@ export const loginActions = async (
         ? redirectTo
         : "/",
   };
-
-  // return result;
 };

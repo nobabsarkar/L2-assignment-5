@@ -35,39 +35,6 @@ const DeleteAndUpdateButton = ({ property }: any) => {
 
   return (
     <>
-      {/* <AlertDialog>
-        <AlertDialogTrigger
-          render={<Button variant="outline">Show Dialog</Button>}
-        />
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-            <AlertDialogDescription>
-              This action cannot be undone. This will permanently delete your
-              account from our servers.
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction>Continue</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-      <div className="mt-5 flex gap-3">
-        <button className="flex cursor-pointer flex-1 items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700">
-          <Edit size={16} />
-          Edit
-        </button>
-
-        <button
-          onClick={handleDelete}
-          className="flex cursor-pointer flex-1 items-center justify-center gap-2 rounded-lg bg-red-50 px-4 py-2.5 text-sm font-medium text-red-600 hover:bg-red-100"
-        >
-          <Trash2 size={16} />
-          Delete
-        </button>
-      </div> */}
-
       <div className="mt-5 grid grid-cols-2 gap-3">
         {/* Edit */}
         <Button
@@ -81,15 +48,6 @@ const DeleteAndUpdateButton = ({ property }: any) => {
 
         {/* Delete */}
         <AlertDialog>
-          {/* <AlertDialogTrigger>
-            <Button
-              type="button"
-              className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-md border border-red-200 bg-red-50 px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-100"
-            >
-              <Trash2 size={16} />
-              Delete
-            </Button>
-          </AlertDialogTrigger> */}
           <AlertDialogTrigger
             render={
               <Button

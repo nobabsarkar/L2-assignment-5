@@ -11,7 +11,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 const Properties = async () => {
@@ -58,8 +57,6 @@ const Properties = async () => {
                   </Badge>
                 ))}
               </div>
-
-              {/* <Button className="w-full mt-3">View Details</Button> */}
             </div>
           </div>
         ))}
@@ -77,7 +74,6 @@ const Properties = async () => {
               <TableHead>Bedrooms</TableHead>
               <TableHead>Bathrooms</TableHead>
               <TableHead>Amenities</TableHead>
-              {/* <TableHead className="text-right">Action</TableHead> */}
             </TableRow>
           </TableHeader>
 
@@ -113,16 +109,6 @@ const Properties = async () => {
                     ))}
                   </div>
                 </TableCell>
-
-                {/* <TableCell className="text-right">
-                  <div className="flex justify-end gap-2">
-                    <Button size="sm">Edit</Button>
-
-                    <Button size="sm" variant="destructive">
-                      Delete
-                    </Button>
-                  </div>
-                </TableCell> */}
               </TableRow>
             ))}
           </TableBody>

@@ -33,11 +33,6 @@ const Review = ({ paymentId }: ReviewProps) => {
       return;
     }
 
-    // const reviewData = {
-    //   rating,
-    //   comment: comment.trim(),
-    // };
-
     const reviewData = {
       paymentId,
       rating,

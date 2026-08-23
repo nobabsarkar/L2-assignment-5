@@ -23,9 +23,7 @@ const MyRequest = async () => {
   // Get payment history
   const paymentHistory = await getAllPaymentHistory();
 
-  // -----------------------------------------
   // Rental Request Status Badge
-  // -----------------------------------------
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "PENDING":
@@ -68,18 +66,14 @@ const MyRequest = async () => {
     }
   };
 
-  // -----------------------------------------
   // Get Payment For Specific Rental Request
-  // -----------------------------------------
   const getPaymentForRequest = (rentalRequestId: string) => {
     return paymentHistory?.data?.find(
       (payment: any) => payment.rentalRequestId === rentalRequestId,
     );
   };
 
-  // -----------------------------------------
   // Payment Status Badge
-  // -----------------------------------------
   const getPaymentBadge = (status?: string) => {
     switch (status) {
       case "PENDING":
@@ -115,9 +109,7 @@ const MyRequest = async () => {
     }
   };
 
-  // -----------------------------------------
   // Action Button
-  // -----------------------------------------
   const renderActionButton = (
     rentalStatus: string,
     rentalRequestId: string,
@@ -232,7 +224,7 @@ const MyRequest = async () => {
                   <TableCell>${item?.property?.price}</TableCell>
 
                   {/* Rental Request Status */}
-                  {/* <TableCell>{getStatusBadge(item?.status)}</TableCell> */}
+
                   <TableCell>
                     {getStatusBadge(
                       payment?.status === "COMPLETED"
