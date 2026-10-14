@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+RentNest
 
-## Getting Started
+Rental Property Management
 
-First, run the development server:
+### About the Project
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+RentNest is a full-stack rental management platform that connects tenants and landlords, making property rentals easier and more efficient. It features property listings, rental requests, role-based dashboards, secure authentication, online payments, and rental status tracking. Built with Next.js, TypeScript, PostgreSQL, and Prisma.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Project Overview — RentNest
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- A full-stack rental management platform connecting tenants and landlords.
+- Property listings and rental request management.
+- Role-based dashboards for tenants, landlords, and administrators.
+- Secure authentication and authorization.
+- Online payment integration with SSLCommerz.
+- Rental status tracking and review system.
+- **Technologies:** Next.js, TypeScript, PostgreSQL, Prisma, Tailwind CSS.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Key Features
 
-## Learn More
+- **Authentication & Authorization:** Secure login and role-based access control.
+- **Property Management:** Create, update, and manage property listings.
+- **Rental Requests:** Submit and manage rental applications.
+- **Role-Based Dashboards:** Dedicated dashboards for tenants, landlords, and administrators.
+- **Online Payments:** Secure payment integration with SSLCommerz.
+- **Rental Tracking:** Track rental request statuses and payment history.
+- **Reviews & Ratings:** Share feedback about rental experiences.
+- **Responsive UI:** Modern, mobile-friendly interface.
 
-To learn more about Next.js, take a look at the following resources:
+### Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Frontend:** Next.js, React, TypeScript
+- **Styling:** Tailwind CSS, shadcn/ui
+- **Backend:** Node.js, Express.js
+- **Database:** PostgreSQL
+- **ORM:** Prisma
+- **Authentication:** JWT, HTTP-only Cookies
+- **Payment Gateway:** SSLCommerz
+- **Tools:** Git, GitHub, Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Contact & Project Links
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Email:** nobabsarkar2020@gmail.com
+- **Live Demo:** https://level2-assignment-5-cyan.vercel.app/
+- **GitHub Repository:** Add your RentNest repository URL here.
